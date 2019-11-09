@@ -72,6 +72,15 @@
     align-items: center;
 }
 
+.clear-text-search {
+    color: red;
+    font-size: 11px;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    cursor: pointer;
+}
+
 /*************************************************************************************************************/
 
 .releases-main {

@@ -3,7 +3,11 @@ import {status} from '../../constants/releaseStatusConstants';
 
 const Filter = (props) => {
 
-    const {filters} = props;
+    const {filters, textFilter} = props;
+
+    let handleTextFilterChange = (v) => {
+        props.updateTextFilter(v)
+    }
 
     let handleFilterClick = (f) => {
         //if the filters array does already contain this filter, then remove it
@@ -25,6 +29,7 @@ const Filter = (props) => {
         </div>
     );
 
+
     return (
         <div className='p-3 filter-main'>
             <div className = 'project-name'>Projects / ENV1.5</div>
@@ -34,10 +39,18 @@ const Filter = (props) => {
                     { filterNodes }
                 </div>
                 <div className = 'right-filters'>
-                    <input type = 'text' className = 'search-filter' placeholder = 'Search..'/>
+                    <input type = 'text' className = 'search-filter' placeholder = 'Search..' name = 'text_filter'
+                        value = {textFilter}
+                        onChange = {(e) => handleTextFilterChange(e.target.value)}
+                    />
                     <div className = 'search-icon'>
                         <i className = "fa fa-search"></i>
                     </div>
+                    {
+                        textFilter !== '' ? 
+                        <span className = 'clear-text-search' onClick = {() => handleTextFilterChange('')}><i className = "fa fa-close"></i>Clear</span> 
+                        : null
+                    }
                 </div>
             </div>
         </div>

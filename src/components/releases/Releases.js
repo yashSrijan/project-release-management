@@ -42,8 +42,10 @@ const Releases = (props) => {
             formValid = false;
         }
 
-        //only do the unique version name check if this is NOT the edit form
-        if(!editId) {
+        //only do the unique version name check if this is NOT the edit form 
+        //OR the provided versionName is not the same as before
+        let oldRelease = props.releases.find(release => release.id === editId)
+        if(!editId || oldRelease.versionName !== versionName.trim()) {
             //check for valid version name, if an existing release is there then set the error
             existing = props.releases.find( release => release.versionName === versionName.trim() )
             if(existing ) {

@@ -9,7 +9,8 @@ const ReleaseTableContainer = (props) => <ReleaseTable {...props}/>
 
 const mapStateToProps = (store) => {
     return {
-        filters : store.filterReducer.filters
+        filters : store.filterReducer.filters,
+        textFilter : store.filterReducer.textFilter
     }
 }
 

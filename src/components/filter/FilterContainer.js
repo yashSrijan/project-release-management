@@ -1,15 +1,15 @@
 import React from 'react';
 import Filter from './Filter';
-import {addFilter, removeFilter} from '../../_actions/filterActions';
+import {addFilter, removeFilter, updateTextFilter} from '../../_actions/filterActions';
 import {connect} from 'react-redux';
 
 //Container component provides access to store and dispatching actions to store
 const FilterContainer = (props) => <Filter {...props}/>
 
 const mapStateToProps = (store) => {
-    const {filters} = store.filterReducer
+    const {filters, textFilter} = store.filterReducer
     return {
-        filters
+        filters, textFilter
     }
 }
 
@@ -20,6 +20,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         removeExistingFilter : function(filter) {
             dispatch(removeFilter(filter))
+        },
+        updateTextFilter : function(text) {
+            dispatch(updateTextFilter(text))
         }
     }
 }

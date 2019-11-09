@@ -1,6 +1,6 @@
 # project-release-management-app
 
-This is a ReactJS-Redux app which puts up a CRUD system for releases/builds of a project. You can create new releases, edit existing ones, delete them and filter them by their status. The app uses some extra npm packages and CDNs to work nicely. These are — **react-datepicker** (for picking the start and release dates), **uuid** (for creating unique ids for every release), **Bootstrap** (fetched via a CDN, for nice layouts and form fields), **Font Awesome** (fetched via a CDN, icons are used edit and delete actions).
+This is a ReactJS-Redux app which puts up a CRUD system for releases/builds of a project. You can create new releases, edit existing ones, delete them and filter them by their status. The app uses some extra npm packages and CDNs to work nicely. These are — **react-datepicker** (for picking the start and release dates), **uuid** (for creating unique ids for every release), **Bootstrap** (fetched via a CDN, for nice layouts and form fields), **Font Awesome** (fetched via a CDN, icons are used for edit and delete actions).
 
 ## Installation
 
