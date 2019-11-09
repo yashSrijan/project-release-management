@@ -1,3 +1,23 @@
+# project-release-management-app
+
+This is a ReactJS-Redux app which puts up a CRUD system for releases/builds of a project. You can create new releases, edit existing ones, delete them and filter them by their status. The app uses some extra npm packages and CDNs to work nicely. These are — **react-datepicker** (for picking the start and release dates), **uuid** (for creating unique ids for every release), **Bootstrap** (fetched via a CDN, for nice layouts and form fields), **Font Awesome** (fetched via a CDN, icons are used edit and delete actions).
+
+## Installation
+
+Use the package manager [npm](https://www.npmjs.com/) to install the required dependencies listed in package.json / package-lock.json files . Navigate to the root dir of the project, open the terminal and do :
+
+```bash
+npm install
+```
+
+After this, do :
+```bash
+npm start
+```
+and the app should start on [localhost](http://localhost:3000) .
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
@@ -6,23 +26,23 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.<br />
+Runs the app in the development mode.<br>
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload if you make edits.<br>
 You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.<br />
+Launches the test runner in the interactive watch mode.<br>
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder.<br />
+Builds the app for production to the `build` folder.<br>
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.<br />
+The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.

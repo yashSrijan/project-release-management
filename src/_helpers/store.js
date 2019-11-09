@@ -1,5 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
-//import logger from 'redux-logger';
+import { createStore } from 'redux';
 
 import {loadState} from './localStorage';
 import rootReducer from '../_reducers/rootReducer';
@@ -9,8 +8,5 @@ let persistedState = loadState();
 
 export const store = createStore (
     rootReducer,
-    persistedState,
-    // applyMiddleware (
-    //     logger 
-    // )
+    persistedState
 );
