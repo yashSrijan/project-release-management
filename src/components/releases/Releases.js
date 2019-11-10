@@ -20,7 +20,7 @@ const Releases = (props) => {
 
     //prepopulate the input fields with the available data for this release
     let onPencilClick = (release) => {
-        //console.log('onPencilClick : ', release)
+        //console.log('just clicked on the pencil : ', release)
         setEditId(release.id);
         setVersionName(release.versionName);
         setDescription(release.description);
@@ -30,13 +30,20 @@ const Releases = (props) => {
     }
 
     let validateForm = () => {
-        let formValid = true, errorsObj = {dateError : '', nameError : ''}, existing;
+        let formValid = true, errorsObj = {dateError : '', nameError : ''}, existing;        
+        
+        let s = startDate, r = releaseDate;
+        //if this is the edit form then create dates in Date format from MM/dd/yyyy format (that is stored in reducer)
+        if(editId) {
+            s = new Date(Date.parse(s))
+            r = new Date(Date.parse(r))
+        }
 
         //check that date fields are not empty
-        if(startDate === null) {
+        if(s === null) {
             errorsObj.dateError = 'Please provide a valid start date.'
             formValid = false;
-        } else if ( releaseDate !== null && releaseDate < startDate) {
+        } else if ( r !== null && r < s) {
             //check that release date is not less than start date
             errorsObj.dateError = 'Release date can\'t be less than start date.'
             formValid = false;
@@ -114,7 +121,7 @@ const Releases = (props) => {
 
     //form should be cleared after creating a new entry or updating an existing one
     let clearForm = () => {
-        setStartDate(''); setReleaseDate(''); setVersionName(''); setDescription(''); setProgress(0);
+        setStartDate(null); setReleaseDate(null); setVersionName(''); setDescription(''); setProgress(0);
         setEditId(null);
     }
 

@@ -1,7 +1,18 @@
 import {  SET_RELEASES, REMOVE_RELEASE, UPDATE_RELEASE  } from '../_constants/releaseConstants';
+import uuid from 'uuid';
 
 const initialState = {
-    releases: []
+    releases: [
+        {
+            versionName : 'NHN 1.0',
+            description : 'New Home Navigator',
+            startDate : '11/01/2019',
+            releaseDate : '12/01/2019',
+            progress : 70,
+            status : 'Unreleased',
+            id : uuid.v4()
+        }
+    ]
 };
 
 export function releaseReducer (state = initialState, action) {
