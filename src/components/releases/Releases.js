@@ -20,23 +20,32 @@ const Releases = (props) => {
 
     //prepopulate the input fields with the available data for this release
     let onPencilClick = (release) => {
-        //console.log('just clicked on the pencil : ', release)
-        setEditId(release.id);
-        setVersionName(release.versionName);
-        setDescription(release.description);
+        //errors should be set to none
+        setErrors({dateError : '', nameError : ''})
+        
+        setEditId(release.id)
+        setVersionName(release.versionName)
+        setDescription(release.description)
         setProgress(release.progress)
         setStartDate(release.startDate)
         setReleaseDate(release.releaseDate === '' ? null : release.releaseDate)
     }
 
     let validateForm = () => {
-        let formValid = true, errorsObj = {dateError : '', nameError : ''}, existing;        
-        
+        let formValid = true, errorsObj = {dateError : '', nameError : ''}, existing, oldRelease;
         let s = startDate, r = releaseDate;
-        //if this is the edit form then create dates in Date format from MM/dd/yyyy format (that is stored in reducer)
+
+        //if only spaces are entered
+        if(versionName.trim() === '') {
+            errorsObj.nameError = 'Please choose a valid version name.'
+            formValid = false;
+        }
+
+        //if this is the edit form then create dates in Date format from MM/dd/yyyy format (that is stored in reducer) and find the oldRelease
         if(editId) {
             s = new Date(Date.parse(s))
             r = new Date(Date.parse(r))
+            oldRelease = props.releases.find(release => release.id === editId)
         }
 
         //check that date fields are not empty
@@ -51,11 +60,10 @@ const Releases = (props) => {
 
         //only do the unique version name check if this is NOT the edit form 
         //OR the provided versionName is not the same as before
-        let oldRelease = props.releases.find(release => release.id === editId)
         if(!editId || oldRelease.versionName !== versionName.trim()) {
             //check for valid version name, if an existing release is there then set the error
             existing = props.releases.find( release => release.versionName === versionName.trim() )
-            if(existing ) {
+            if(existing) {
                 errorsObj.nameError = 'Please provide a unique version name.'
                 formValid = false;
             }
